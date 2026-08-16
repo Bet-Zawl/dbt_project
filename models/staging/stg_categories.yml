@@ -1,0 +1,15 @@
+version: 2
+
+models:
+  - name: stg_categories
+    description: Staging model for Northwind categories data.
+    columns:
+      - name: category_id
+        description: Unique identifier for the category.
+        tests:
+          - unique
+          - not_null
+      - name: category_name
+        description: Name of the category.
+      - name: description
+        description: Description of the category.

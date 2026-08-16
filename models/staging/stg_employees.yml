@@ -1,0 +1,21 @@
+version: 2
+
+models:
+  - name: stg_employees
+    description: Staged employee data from the Northwind employees source.
+    columns:
+      - name: employee_id
+        description: Unique identifier for each employee.
+        tests:
+          - unique
+          - not_null
+      - name: title
+        description: Employee job title.
+      - name: hire_date
+        description: Date the employee was hired.
+      - name: city
+        description: City where the employee is located.
+      - name: country
+        description: Country where the employee is located.
+      - name: full_name
+        description: Concatenated first and last name of the employee.

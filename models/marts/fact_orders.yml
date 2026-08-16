@@ -1,0 +1,65 @@
+version: 2
+
+models:
+  - name: fact_orders
+    description: "Fact table for orders, enriched with operational and delivery KPIs from the Northwind dataset."
+    columns:
+      - name: order_id
+        description: "Unique identifier of the order."
+        tests:
+          - not_null
+          - unique
+
+      - name: customer_id
+        description: "Identifier of the customer who placed the order."
+        tests:
+          - not_null
+
+      - name: employee_id
+        description: "Identifier of the employee responsible for the order."
+
+      - name: ship_via
+        description: "Shipping company identifier used for the order."
+
+      - name: order_date
+        description: "Date when the order was placed."
+        tests:
+          - not_null
+
+      - name: required_date
+        description: "Expected delivery date requested by the customer."
+
+      - name: shipped_date
+        description: "Actual shipment date."
+
+      - name: ship_city
+        description: "Destination city for shipping."
+
+      - name: ship_country
+        description: "Destination country for shipping."
+
+      - name: freight
+        description: "Shipping cost associated with the order."
+        tests:
+          - not_null
+
+      - name: is_shipped
+        description: "Flag indicating whether the order has been shipped."
+
+      - name: is_on_time
+        description: "Flag indicating whether the order was delivered on time."
+
+      - name: delai_livraison_jours
+        description: "Delivery delay in days between the requested and actual delivery dates."
+
+      - name: nb_articles
+        description: "Number of distinct articles included in the order."
+
+      - name: quantite_totale
+        description: "Total number of units ordered across all articles."
+
+      - name: montant_total
+        description: "Total order amount before freight charges."
+
+      - name: montant_total_avec_frais
+        description: "Total order amount including freight charges."

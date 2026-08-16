@@ -1,0 +1,23 @@
+version: 2
+
+models:
+  - name: int_monthly_revenue
+    description: "Monthly revenue metrics derived from orders and order details."
+    columns:
+      - name: month
+        description: "Month of the order data (truncated to the first day of the month)."
+        tests:
+          - not_null
+          - unique
+      - name: nb_commandes
+        description: "Number of orders placed during the month."
+        tests:
+          - not_null
+      - name: ca_total
+        description: "Total revenue for the month."
+        tests:
+          - not_null
+      - name: panier_moyen
+        description: "Average order amount for the month."
+      - name: variation_vs_mois_prec
+        description: "Revenue variation compared with the previous month."

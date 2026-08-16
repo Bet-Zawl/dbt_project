@@ -1,0 +1,23 @@
+version: 2
+
+models:
+  - name: stg_customers
+    description: "Staging model for customer data from the Northwind source."
+    columns:
+      - name: customer_id
+        description: "Unique identifier for the customer."
+        tests:
+          - unique
+          - not_null
+      - name: company_name
+        description: "Customer company name."
+      - name: contact_name
+        description: "Customer contact name."
+      - name: contact_title
+        description: "Customer contact title."
+      - name: city
+        description: "Customer city."
+      - name: country
+        description: "Customer country."
+      - name: phone
+        description: "Customer phone number."

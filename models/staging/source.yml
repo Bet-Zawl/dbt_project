@@ -1,0 +1,87 @@
+version: 2
+
+sources:
+  - name: dwh_northwind
+    description: >
+      Raw OLTP Northwind database used as the source for the staging layer.
+      All tables are ingested as-is and cleaned in stg_* models.
+
+    schema: public   # adapt if your raw schema is different
+
+    tables:
+      - name: customers
+        description: Raw customers table.
+        columns:
+          - name: customer_id
+            tests:
+              - not_null
+              - unique
+
+      - name: orders
+        description: Raw orders table.
+        columns:
+          - name: order_id
+            tests:
+              - not_null
+              - unique
+          - name: customer_id
+            tests:
+              - not_null
+              - relationships:
+                  to: ref('stg_customers')
+                  field: customer_id
+
+      - name: order_details
+        description: Raw order line items.
+        columns:
+          - name: order_id
+            tests:
+              - not_null
+          - name: product_id
+            tests:
+              - not_null
+
+      - name: products
+        description: Raw products table.
+        columns:
+          - name: product_id
+            tests:
+              - not_null
+              - unique
+
+      - name: suppliers
+        description: Raw suppliers table.
+        columns:
+          - name: supplier_id
+            tests:
+              - not_null
+              - unique
+
+      - name: categories
+        description: Raw product categories.
+        columns:
+          - name: category_id
+            tests:
+              - not_null
+              - unique
+
+      - name: employees
+        description: Raw employees table.
+        columns:
+          - name: employee_id
+            tests:
+              - not_null
+              - unique
+
+      - name: shippers
+        description: Raw shippers table.
+        columns:
+          - name: shipper_id
+            tests:
+              - not_null
+              - unique
+
+
+      
+
+

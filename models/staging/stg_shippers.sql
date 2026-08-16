@@ -1,11 +1,12 @@
-with stg_shippers as (
+{{ config(materialized='view') }}
 
+with stg_shippers as (
     select
-        "shipper_id"     ::integer       as shipper_id,
-        "company_name"   ::varchar       as company_name,
-        "phone"          ::varchar       as phone
-    from "dwh_northwind"."public"."shippers"
+        shipper_id,
+        company_name,
+        phone
+    from {{ source('dwh_northwind', 'shippers') }}
 )
 
-select * 
+select *
 from stg_shippers

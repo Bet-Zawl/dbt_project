@@ -1,0 +1,38 @@
+version: 2
+
+models:
+  - name: dim_customers
+    description: "Customer dimension used for BI reporting and segmentation"
+    columns:
+      - name: customer_id
+        description: "Unique identifier of the customer"
+        tests:
+          - unique
+          - not_null
+
+      - name: company_name
+        description: "Official company name of the customer"
+
+      - name: contact_name
+        description: "Primary contact name for the customer"
+
+      - name: contact_title
+        description: "Job title of the customer contact"
+
+      - name: city
+        description: "City where the customer is located"
+
+      - name: country
+        description: "Country of the customer, stored in uppercase"
+
+      - name: phone
+        description: "Phone number of the customer"
+
+      - name: customer_label
+        description: "Readable label combining the contact name and company name"
+
+      - name: city_country_label
+        description: "Readable label combining the city and country"
+
+      - name: customer_region_group
+        description: "Regional grouping used for customer segmentation"

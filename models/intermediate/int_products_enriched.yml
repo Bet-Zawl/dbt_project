@@ -1,0 +1,52 @@
+version: 2
+
+models:
+  - name: int_products_enriched
+    description: "Enriched product model combining product, category, and supplier information."
+    columns:
+      - name: product_id
+        description: "Unique identifier for the product."
+        tests:
+          - unique
+          - not_null
+
+      - name: product_name
+        description: "Name of the product."
+        tests:
+          - not_null
+
+      - name: supplier_id
+        description: "Identifier of the supplier associated with the product."
+
+      - name: supplier_name
+        description: "Company name of the supplier."
+
+      - name: category_id
+        description: "Identifier of the category associated with the product."
+
+      - name: category_name
+        description: "Name of the product category."
+
+      - name: category_description
+        description: "Description of the product category."
+
+      - name: unit_price
+        description: "Unit price of the product."
+
+      - name: units_in_stock
+        description: "Number of units currently in stock."
+
+      - name: units_on_order
+        description: "Number of units currently on order."
+
+      - name: reorder_level
+        description: "Inventory threshold that triggers reordering."
+
+      - name: discontinued
+        description: "Indicates whether the product has been discontinued."
+
+      - name: product_status
+        description: "Business status of the product: Active or Discontinued."
+
+      - name: inventory_value
+        description: "Estimated inventory value based on unit price and units in stock."

@@ -1,0 +1,46 @@
+version: 2
+
+models:
+  - name: stg_orders
+    description: Staging model for orders from the Northwind source.
+    columns:
+      - name: order_id
+        description: Unique identifier for the order.
+        tests:
+          - unique
+          - not_null
+
+      - name: customer_id
+        description: Identifier of the customer who placed the order.
+        tests:
+          - not_null
+
+      - name: employee_id
+        description: Identifier of the employee responsible for the order.
+
+      - name: order_date
+        description: Date the order was placed.
+
+      - name: required_date
+        description: Date the order was required to be delivered.
+
+      - name: shipped_date
+        description: Date the order was shipped.
+
+      - name: ship_via
+        description: Identifier of the shipping company used for the order.
+
+      - name: freight
+        description: Freight cost associated with the shipment.
+
+      - name: ship_city
+        description: City of the shipping address.
+
+      - name: ship_region
+        description: Region of the shipping address.
+
+
+      - name: is_shipped
+        description: Indicates whether the order has been shipped.
+        tests:
+          - not_null

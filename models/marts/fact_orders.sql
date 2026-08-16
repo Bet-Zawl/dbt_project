@@ -1,43 +1,31 @@
 
+{{ config(materialized='table') }}
 
 WITH fact_orders AS (
     SELECT
-        order_id,
-        customer_id,
-        employee_id,
-        ship_via as shipper_id,
-        order_date,
-        required_date,
-        shipped_date,
-        ship_city,
-        ship_country,
-        freight,
-        is_shipped,
-        delai_livraison_jours,
-        nb_articles,
-        quantite_totale,
-        montant_total,
-        montant_total_avec_frais
-
-    FROM "northwind"."public"."int_orders_enriched"
+    --intermediate orders enriched
+        oe.order_id,
+        oe.customer_id,
+        oe.employee_id,
+        oe.ship_via,
+        oe.order_date,
+        oe.required_date,
+        oe.shipped_date,
+        oe.ship_city,
+        oe.ship_country,
+        oe.freight,
+        oe.is_shipped,
+        oe.is_on_time,
+        oe.delai_livraison_jours,
+        oe.nb_articles,
+        oe.quantite_totale,
+        oe.montant_total,
+        /* Calcul du montant total avec frais */
+        (oe.montant_total + oe.freight) AS montant_total_avec_frais
+    FROM {{ ref('int_orders_enriched') }} oe 
+    
 )
 
-SELECT
-        order_id,
-        customer_id,
-        employee_id,
-        shipper_id,
-        order_date,
-        required_date,
-        shipped_date,
-        ship_city,
-        ship_country,
-        freight,
-        is_shipped,
-        delai_livraison_jours,
-        nb_articles,
-        quantite_totale,
-        montant_total,
-        montant_total_avec_frais
-
+SELECT *
 FROM fact_orders
+

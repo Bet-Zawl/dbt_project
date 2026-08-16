@@ -1,0 +1,46 @@
+version: 2
+
+models:
+  - name: int_orders_enriched
+    description: >
+      Intermediate model that enriches orders with customer, employee, and shipper details.
+    columns:
+      - name: order_id
+        description: Unique identifier for each order.
+        tests:
+          - not_null
+          - unique
+      - name: customer_id
+        description: Customer identifier associated with the order.
+      - name: customer_company_name
+        description: Company name of the customer.
+      - name: customer_contact_name
+        description: Contact name of the customer.
+      - name: customer_city
+        description: City of the customer.
+      - name: customer_country
+        description: Country of the customer.
+      - name: employee_id
+        description: Employee identifier associated with the order.
+      - name: full_name
+        description: Full name of the employee handling the order.
+      - name: order_date
+        description: Date the order was placed.
+      - name: required_date
+        description: Date the order was required by the customer.
+      - name: shipped_date
+        description: Date the order was shipped.
+      - name: ship_via
+        description: Identifier of the shipper used for the order.
+      - name: shipper_name
+        description: Name of the shipper used for the order.
+      - name: freight
+        description: Freight charge applied to the order.
+      - name: ship_name
+        description: Name of the recipient or ship-to party.
+      - name: ship_address
+        description: Shipping address for the order.
+      - name: ship_city
+        description: Shipping city for the order.
+      - name: ship_country
+        description: Shipping country for the order.

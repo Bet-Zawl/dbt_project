@@ -1,4 +1,5 @@
 
+{{ config(materialized='table') }}
 
 WITH dim_employees AS (
     SELECT
@@ -9,16 +10,8 @@ WITH dim_employees AS (
         ca_total,
         taux_livraison_a_temps,
         delai_moyen_livraison
-    FROM "northwind"."public"."int_employee_stats"
+    FROM {{ref('int_employees_stats')}}
 )
 
-SELECT
-    employee_id,
-    full_name,
-    hire_date,
-    nb_commandes_traitees,
-    ca_total,
-    taux_livraison_a_temps,
-    delai_moyen_livraison
-
+SELECT *
 FROM dim_employees

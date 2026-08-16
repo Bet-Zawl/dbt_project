@@ -1,0 +1,34 @@
+version: 2
+
+models:
+  - name: stg_suppliers
+    description: >
+      Table de staging des fournisseurs provenant de la base OLTP Northwind.
+      Nettoie, renomme et standardise les colonnes pour les modèles intermédiaires et marts.
+
+    columns:
+      - name: supplier_id
+        description: Identifiant unique du fournisseur.
+        tests:
+          - not_null
+          - unique
+
+      - name: company_name
+        description: Nom de l’entreprise fournisseur.
+        tests:
+          - not_null
+
+      - name: contact_name
+        description: Nom du contact principal chez le fournisseur.
+
+      - name: contact_title
+        description: Titre ou fonction du contact.
+
+      - name: city
+        description: Ville du fournisseur.
+
+      - name: country
+        description: Pays du fournisseur.
+
+      - name: phone
+        description: Numéro de téléphone du fournisseur.

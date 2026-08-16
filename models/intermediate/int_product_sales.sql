@@ -1,18 +1,28 @@
-with int_product_sales as (
-
-SELECT
-    p.product_id,
-    SUM(oi.quantity) AS quantite_totale_vendue,
-    SUM(oi.quantity * oi.unit_price) AS ca_genere,
-    COUNT(DISTINCT oi.order_id) AS nb_commandes_distinctes,
-    p.units_in_stock AS stock_restant
-FROM stg_products p
-LEFT JOIN stg_order_details oi
-    ON p.product_id = oi.product_id
-GROUP BY
-    p.product_id,
-    p.units_in_stock
-ORDER BY
-    ca_genere DESC
-)
-select * from int_product_sales
+{{ config(materialized='view') }}
+
+with int_products as(    
+select
+    o.order_id,
+    o.customer_id,
+    o.order_date,
+    o.required_date,
+    o.shipped_date,
+    o.ship_city,
+    o.ship_country,
+    od.product_id,
+    p.product_name,
+    p.category_id,
+    od.quantity,
+    od.unit_price,
+    od.discount,
+    od.quantity * od.unit_price * (1 - od.discount) as line_amount
+
+from {{ref('stg_orders')}} o
+join {{ref('stg_order_details')}} od
+on od.order_id = o.order_id
+join {{ref('stg_products')}} p 
+on p.product_id = od.product_id
+
+)
+select *
+from int_products

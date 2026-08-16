@@ -1,3 +1,5 @@
+{{ config(materialized='view') }}
+
 with stg_customers as (
     
     select
@@ -9,7 +11,7 @@ with stg_customers as (
         convert_from(convert_to(country, 'LATIN1'), 'LATIN1') as country,
         trim(regexp_replace(phone, '[^0-9+]', '', 'g')) as phone
     
-    from "dwh_northwind"."public"."customers"
+    from {{source('dwh_northwind', 'customers')}}
 )
 
 select *

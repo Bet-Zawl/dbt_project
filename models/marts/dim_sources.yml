@@ -1,0 +1,23 @@
+version: 2
+
+models:
+  - name: dim_sources
+    description: "Dimension model that stores source-system attributes used for analytics and reporting."
+    columns:
+      - name: source_key
+        description: "Surrogate key for the source dimension."
+        tests:
+          - not_null
+          - unique
+      - name: source_id
+        description: "Business identifier of the source."
+        tests:
+          - not_null
+      - name: source_name
+        description: "Human-readable name of the source."
+      - name: source_type
+        description: "Classification of the source system."
+      - name: is_active
+        description: "Indicates whether the source is currently active."
+        tests:
+          - not_null

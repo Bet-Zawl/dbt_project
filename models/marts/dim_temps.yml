@@ -1,0 +1,41 @@
+version: 2
+
+models:
+  - name: dim_temps
+    description: "Dimension temporelle issue des commandes."
+    columns:
+      - name: date
+        description: "Date de commande au format date."
+        tests:
+          - not_null
+          - unique
+
+      - name: jour
+        description: "Jour du mois extrait de la date."
+        tests:
+          - not_null
+
+      - name: mois
+        description: "Mois extrait de la date."
+        tests:
+          - not_null
+
+      - name: annee
+        description: "Année extraite de la date."
+        tests:
+          - not_null
+
+      - name: trimestre
+        description: "Trimestre extrait de la date."
+        tests:
+          - not_null
+
+      - name: annee_mois
+        description: "Identifiant du mois au format AAAA-MM."
+        tests:
+          - not_null
+
+      - name: est_weekend
+        description: "Indique si la date tombe un week-end."
+        tests:
+          - not_null

@@ -1,0 +1,15 @@
+version: 2
+
+models:
+  - name: stg_shippers
+    description: Staging model for shipper data from the Northwind source.
+    columns:
+      - name: shipper_id
+        description: Unique identifier for the shipper.
+        tests:
+          - unique
+          - not_null
+      - name: company_name
+        description: Name of the shipping company.
+      - name: phone
+        description: Contact phone number for the shipper.

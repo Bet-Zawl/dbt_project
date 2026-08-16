@@ -1,0 +1,49 @@
+version: 2
+
+models:
+  - name: dim_products
+    description: "Dimension produit enrichie pour l'analyse commerciale et la segmentation de gamme."
+    columns:
+      - name: product_id
+        description: "Identifiant unique du produit."
+        tests:
+          - unique
+          - not_null
+
+      - name: product_name
+        description: "Nom du produit."
+        tests:
+          - not_null
+
+      - name: unit_price
+        description: "Prix unitaire du produit."
+
+      - name: units_in_stock
+        description: "Quantité actuellement en stock."
+
+      - name: units_on_order
+        description: "Quantité commandée mais non livrée."
+
+      - name: discontinued
+        description: "Indique si le produit est discontinué."
+
+      - name: en_stock
+        description: "Indicateur métier de disponibilité du produit en stock."
+
+      - name: category_name
+        description: "Nom de la catégorie du produit."
+
+      - name: category_description
+        description: "Description de la catégorie du produit."
+
+      - name: supplier_name
+        description: "Nom du fournisseur du produit."
+
+      - name: supplier_country
+        description: "Pays du fournisseur."
+
+      - name: gamme
+        description: "Classification du produit selon son prix : entrée de gamme, milieu de gamme ou premium."
+        tests:
+          - accepted_values:
+              values: ['Entree de gamme', 'Milieu de gamme', 'Premium']

@@ -1,0 +1,25 @@
+version: 2
+
+models:
+  - name: int_customers
+    description: Intermediate customer model with standardized customer attributes.
+    columns:
+      - name: customer_id
+        description: Unique identifier for the customer.
+        tests:
+          - unique
+          - not_null
+      - name: company_name
+        description: Name of the customer's company.
+      - name: contact_name
+        description: Name of the main contact for the customer.
+      - name: contact_title
+        description: Job title of the main contact.
+      - name: address
+        description: Street address of the customer.
+      - name: city
+        description: Postal code or ZIP code for the customer.
+      - name: country
+        description: Country where the customer is located.
+      - name: phone
+        description: Phone number for the customer.
