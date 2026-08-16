@@ -8,7 +8,7 @@ with stg_suppliers as (
         contact_title,
         city,
         country,
-        phone
+        phone as supplier_phone
     from {{ source('dwh_northwind', 'suppliers') }}
 )
 

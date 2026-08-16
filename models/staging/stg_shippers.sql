@@ -2,9 +2,9 @@
 
 with stg_shippers as (
     select
-        shipper_id,
-        company_name,
-        phone
+        shipper_id as ship_via,
+        company_name as shipper_company_name,
+        phone as shipper_company_phone
     from {{ source('dwh_northwind', 'shippers') }}
 )
 

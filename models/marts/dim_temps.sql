@@ -1,3 +1,4 @@
+{{ config(materialized='table') }}
 
 WITH dim_temps AS (
     SELECT

@@ -1,11 +1,20 @@
-
+{{ config(materialized='table') }}
 
 WITH dim_shippers AS (
     SELECT
-        shipper_id,
-        company_name,
-        phone
-    from {{ref('stg_shippers')}}
+        order_id,
+        ship_via,
+        freight, 
+        order_date,
+        required_date,
+        shipped_date,
+        shipper_company_name,
+        shipper_company_phone,
+        ship_city,
+        ship_country,
+        is_shipped
+        
+    from {{ref('int_shippers')}}
 )
 select *
 
