@@ -171,8 +171,8 @@ DWH_dbt_project:
       host: localhost
       user: postgres
       password: zawl
-      dbname: northwind_dwh
-      schema: analytics
+      dbname: dwh_northwind
+      schema: public
       threads: 4
 ```
 
