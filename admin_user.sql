@@ -18,7 +18,7 @@ GRANT CREATE ON DATABASE northwind TO DWH_dbt_project;
 CREATE USER analyste WITH PASSWORD 'analyste123';
 GRANT dwh_northwind_readonly TO analyste;
 
-CREATE USER dbt_user WITH PASSWORD 'dbt123';
+CREATE USER dbt_user WITH PASSWORD 'zawl';
 GRANT northwind_dbt TO dbt_user;
 
 -- Droits par défaut sur les futures tables créées par dbt_user

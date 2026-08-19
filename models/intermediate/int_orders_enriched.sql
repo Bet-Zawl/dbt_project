@@ -1,4 +1,4 @@
-{{ config(materialized='table') }}
+{{ config(materialized='view') }}
 
 WITH int_orders_enriched AS (
     SELECT
