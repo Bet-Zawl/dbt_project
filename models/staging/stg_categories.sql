@@ -1,3 +1,5 @@
+{{ config(materialized='view') }}
+
 with stg_categories as (
 
     select 
